@@ -270,13 +270,17 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
 .portrait{position:sticky;top:120px}
 .portrait figure{margin:0}
 .portrait .ph{
-  width:clamp(150px,15vw,200px);height:clamp(150px,15vw,200px);border-radius:50%;
+  position:relative;width:clamp(190px,19vw,272px);height:clamp(190px,19vw,272px);border-radius:50%;
   overflow:hidden;cursor:zoom-in;border:1px solid rgba(43,39,36,.10);
-  box-shadow:0 14px 40px rgba(43,39,36,.10);transition:transform .5s var(--ease)
+  box-shadow:0 18px 50px rgba(43,39,36,.13);transition:transform .5s var(--ease)
 }
-.portrait .ph:hover{transform:scale(1.03)}
+.portrait .ph::after{
+  content:'';position:absolute;inset:-9px;border-radius:50%;
+  border:1px solid rgba(196,153,90,.35);pointer-events:none
+}
+.portrait .ph:hover{transform:scale(1.025)}
 .portrait .ph img{width:100%;height:100%;object-fit:cover}
-.portrait figcaption{margin-top:20px}
+.portrait figcaption{margin-top:26px}
 .portrait .nm{font-family:var(--serif);font-size:1.5rem;line-height:1.2}
 .portrait .rl{font-size:.78rem;letter-spacing:.06em;color:var(--ink-3);margin-top:4px}
 .credentials{margin-top:26px;border-top:1px solid rgba(43,39,36,.13);padding-top:20px;
@@ -345,23 +349,83 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
   font-size:.86rem;color:var(--ink-2);border-radius:0 3px 3px 0
 }
 
-form{display:flex;flex-direction:column;gap:16px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{position:relative}
-label{display:block;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;margin-bottom:7px}
-input,textarea{
-  width:100%;font-family:var(--sans);font-size:.94rem;font-weight:300;color:var(--ink);
-  background:rgba(255,255,255,.62);border:1px solid rgba(43,39,36,.16);border-radius:2px;
-  padding:13px 15px;transition:border-color .3s var(--ease),background .3s var(--ease)
+/* ---- form card ---- */
+.formcard{
+  position:relative;overflow:hidden;background:var(--cream);
+  border:1px solid rgba(43,39,36,.10);border-radius:3px;
+  padding:clamp(26px,3.4vw,46px);
+  box-shadow:0 26px 60px -40px rgba(43,39,36,.55)
 }
-input:focus,textarea:focus{outline:none;border-color:var(--gold);background:#fff}
-textarea{resize:vertical;min-height:132px}
-.consent{display:flex;gap:11px;align-items:flex-start;font-size:.78rem;color:var(--ink-3);
-  line-height:1.55;text-transform:none;letter-spacing:normal;font-weight:300;margin-bottom:0}
-.consent input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--gold-2)}
-form .btn{align-self:flex-start;margin-top:4px}
-.hp{position:absolute;left:-9999px}
+.formcard::before{
+  content:'';position:absolute;right:-70px;bottom:-60px;width:250px;height:285px;
+  background:url('assets/logo-mark.svg') no-repeat center/contain;opacity:.03;pointer-events:none
+}
+.formcard::after{
+  content:'';position:absolute;left:0;top:0;height:2px;width:100%;
+  background:linear-gradient(90deg,var(--gold),var(--gold-soft) 55%,transparent)
+}
+.fhead{position:relative;z-index:1;margin-bottom:clamp(24px,3vw,34px)}
+.fhead h3{font-size:clamp(1.35rem,2vw,1.7rem);margin-bottom:6px}
+.fhead p{font-size:.85rem;color:var(--ink-3);max-width:40ch}
+
+form{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,26px);position:relative;z-index:1}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.4vw,26px)}
+.field{position:relative}
+.field::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);
+  transition:width .5s var(--ease)
+}
+.field:focus-within::after{width:100%}
+label{display:block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;margin-bottom:4px}
+.field:focus-within > label{color:var(--gold-2)}
+input,textarea{
+  width:100%;font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid rgba(43,39,36,.20);border-radius:0;
+  padding:8px 0 11px;transition:border-color .3s var(--ease)
+}
+input::placeholder,textarea::placeholder{color:rgba(92,86,80,.45)}
+input:focus,textarea:focus{outline:none}
+textarea{resize:vertical;min-height:118px;line-height:1.7}
+
+.consent{display:flex;gap:13px;align-items:flex-start;font-size:.79rem;color:var(--ink-3);
+  line-height:1.6;text-transform:none;letter-spacing:normal;font-weight:300;margin-bottom:0;cursor:pointer}
+.consent input{position:absolute;opacity:0;width:1px;height:1px}
+.consent .box{
+  width:18px;height:18px;flex-shrink:0;margin-top:3px;border:1px solid rgba(43,39,36,.30);
+  border-radius:2px;display:grid;place-items:center;background:rgba(255,255,255,.6);
+  transition:background .3s var(--ease),border-color .3s var(--ease)
+}
+.consent .box svg{opacity:0;transform:scale(.6);transition:.3s var(--ease)}
+.consent input:checked + .box{background:var(--gold);border-color:var(--gold)}
+.consent input:checked + .box svg{opacity:1;transform:scale(1)}
+.consent input:focus-visible + .box{outline:2px solid var(--gold-2);outline-offset:2px}
+
+form .btn{align-self:flex-start;margin-top:2px;min-width:230px}
+.btn[aria-busy="true"]{pointer-events:none;opacity:.6}
+.fnote{font-size:.72rem;color:var(--ink-3);opacity:.85;line-height:1.6}
+.ferr{
+  display:none;align-items:flex-start;gap:11px;font-size:.85rem;line-height:1.6;color:var(--ink-2);
+  background:rgba(185,109,94,.10);border-left:2px solid #B96D5E;padding:14px 16px;border-radius:0 3px 3px 0
+}
+.ferr.show{display:flex}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* success panel */
+.thanks{display:none;position:relative;z-index:1;text-align:center;padding:clamp(14px,3vw,34px) 0}
+.formcard.sent form{display:none}
+.formcard.sent .fhead{display:none}
+.formcard.sent .thanks{display:block;animation:fadein .6s var(--ease)}
+.thanks .tick{
+  width:58px;height:58px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#fff;
+  box-shadow:0 10px 30px rgba(168,124,63,.30)
+}
+.thanks h3{font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:10px}
+.thanks p{color:var(--ink-3);max-width:38ch;margin:0 auto;font-size:.92rem}
+.thanks .tcontact{margin-top:24px;font-size:.85rem;color:var(--ink-3)}
+.thanks .tcontact a{color:var(--gold-2);text-decoration:none}
+.thanks .tcontact a:hover{text-decoration:underline}
 
 /* ============ FOOTER ============ */
 footer{background:var(--night);color:#CFC7BB;padding:clamp(56px,7vw,96px) 0 0;font-size:.86rem}
@@ -427,9 +491,13 @@ footer a:hover{color:var(--gold-soft)}
   .art{grid-template-columns:1fr;gap:6px;padding:22px 0}
   .art .ar{display:none}
   .art:hover{padding-left:0}
-  .portrait figure{display:flex;gap:20px;align-items:center}
+  .portrait figure{display:flex;gap:24px;align-items:center}
   .portrait figcaption{margin-top:0}
   .credentials{margin-top:22px}
+}
+@media(max-width:640px){
+  .portrait figure{flex-direction:column;align-items:flex-start;gap:20px}
+  .portrait .ph{width:200px;height:200px}
 }
 @media(max-width:560px){
   .frow{grid-template-columns:1fr}
@@ -943,34 +1011,83 @@ footer a:hover{color:var(--gold-soft)}
       </div>
 
       <div class="rv rv-d1">
-        <form name="epikoinonia" method="POST" data-netlify="true" netlify-honeypot="company" action="#epikoinonia">
-          <input type="hidden" name="form-name" value="epikoinonia">
-          <p class="hp"><label>Μην συμπληρώσετε: <input name="company" tabindex="-1" autocomplete="off"></label></p>
-          <div class="frow">
-            <div class="field">
-              <label for="f-name"><span class="i-el">Ονοματεπώνυμο</span><span class="i-en">Full name</span></label>
-              <input type="text" id="f-name" name="name" required autocomplete="name">
+        <div class="formcard" id="formcard">
+          <div class="fhead">
+            <h3><span class="i-el">Στείλτε μου ένα μήνυμα</span><span class="i-en">Send me a message</span></h3>
+            <p>
+              <span class="i-el">Γράψτε μου όσα θέλετε να μοιραστείτε ή απλώς ζητήστε ένα ραντεβού γνωριμίας. Το μήνυμά σας είναι εμπιστευτικό.</span>
+              <span class="i-en">Write whatever you wish to share, or simply ask for a first meeting. Your message is confidential.</span>
+            </p>
+          </div>
+
+          <form id="viwForm" action="https://formspree.io/f/mnpadbkw" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="ΒΙΩ — Νέο μήνυμα από την ιστοσελίδα">
+            <p class="hp" aria-hidden="true"><label>Μην συμπληρώσετε αυτό το πεδίο<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+
+            <div class="frow">
+              <div class="field">
+                <label for="f-name"><span class="i-el">Ονοματεπώνυμο</span><span class="i-en">Full name</span></label>
+                <input type="text" id="f-name" name="Ονοματεπώνυμο" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="f-phone"><span class="i-el">Τηλέφωνο</span><span class="i-en">Telephone</span></label>
+                <input type="tel" id="f-phone" name="Τηλέφωνο" autocomplete="tel">
+              </div>
             </div>
+
             <div class="field">
-              <label for="f-phone"><span class="i-el">Τηλέφωνο</span><span class="i-en">Telephone</span></label>
-              <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+              <label for="f-email">E-mail</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email">
             </div>
+
+            <div class="field">
+              <label for="f-msg"><span class="i-el">Το μήνυμά σας</span><span class="i-en">Your message</span></label>
+              <textarea id="f-msg" name="Μήνυμα" required></textarea>
+            </div>
+
+            <label class="consent" for="f-consent">
+              <input type="checkbox" id="f-consent" name="Συναίνεση" value="Ναι" required>
+              <span class="box" aria-hidden="true">
+                <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.4 4 7.4 10 1.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="i-el">Συναινώ στην επεξεργασία των στοιχείων μου με μοναδικό σκοπό την απάντηση στο μήνυμά μου. Τα στοιχεία δεν κοινοποιούνται σε τρίτους.</span>
+                <span class="i-en">I consent to my details being processed for the sole purpose of replying to my message. Details are not shared with third parties.</span>
+              </span>
+            </label>
+
+            <div class="ferr" id="fErr" role="alert">
+              <span>
+                <span class="i-el">Κάτι πήγε στραβά με την αποστολή. Δοκιμάστε ξανά ή γράψτε μου απευθείας στο <a href="mailto:info@viw.gr" style="color:var(--gold-2)">info@viw.gr</a>.</span>
+                <span class="i-en">Something went wrong. Please try again, or write to me directly at <a href="mailto:info@viw.gr" style="color:var(--gold-2)">info@viw.gr</a>.</span>
+              </span>
+            </div>
+
+            <button type="submit" class="btn" id="fBtn">
+              <span data-el="Αποστολή μηνύματος" data-en="Send message">Αποστολή μηνύματος</span>
+            </button>
+
+            <p class="fnote">
+              <span class="i-el">Απαντώ συνήθως εντός 1–2 εργάσιμων ημερών.</span>
+              <span class="i-en">I usually reply within 1–2 working days.</span>
+            </p>
+          </form>
+
+          <div class="thanks" id="fThanks" role="status">
+            <div class="tick" aria-hidden="true">
+              <svg width="22" height="18" viewBox="0 0 22 18" fill="none"><path d="M2 9.2 8 15.4 20 2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3><span class="i-el">Ευχαριστώ για το μήνυμά σας</span><span class="i-en">Thank you for your message</span></h3>
+            <p>
+              <span class="i-el">Το έλαβα και θα επικοινωνήσω μαζί σας το συντομότερο δυνατό, ώστε να βρούμε μια ημέρα και ώρα που να μας εξυπηρετεί.</span>
+              <span class="i-en">I have received it and will get back to you as soon as possible, so that we can find a day and time that suits us both.</span>
+            </p>
+            <p class="tcontact">
+              <span class="i-el">Για κάτι επείγον:</span><span class="i-en">If something is urgent:</span>
+              <a href="tel:+302312317323">2312 317 323</a>
+            </p>
           </div>
-          <div class="field">
-            <label for="f-email">E-mail</label>
-            <input type="email" id="f-email" name="email" required autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="f-msg"><span class="i-el">Το μήνυμά σας</span><span class="i-en">Your message</span></label>
-            <textarea id="f-msg" name="message" required></textarea>
-          </div>
-          <label class="consent" for="f-consent">
-            <input type="checkbox" id="f-consent" name="consent" required>
-            <span class="i-el">Συναινώ στην επεξεργασία των στοιχείων μου με μοναδικό σκοπό την απάντηση στο μήνυμά μου. Τα στοιχεία δεν κοινοποιούνται σε τρίτους.</span>
-            <span class="i-en">I consent to my details being processed for the sole purpose of replying to my message. Details are not shared with third parties.</span>
-          </label>
-          <button type="submit" class="btn"><span data-el="Αποστολή μηνύματος" data-en="Send message">Αποστολή μηνύματος</span></button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -1169,6 +1286,43 @@ footer a:hover{color:var(--gold-soft)}
       if(el.open) dets.forEach(function(o){ if(o!==el) o.open=false; });
     });
   });
+
+  /* ---------- contact form (Formspree, AJAX) ---------- */
+  var form=d.getElementById('viwForm'), card=d.getElementById('formcard'),
+      fBtn=d.getElementById('fBtn'), fErr=d.getElementById('fErr');
+  if(form){
+    var LABELS={
+      el:{idle:'Αποστολή μηνύματος', busy:'Αποστολή…'},
+      en:{idle:'Send message',       busy:'Sending…'}
+    };
+    function setBtn(state){
+      var l=root.getAttribute('lang')==='en'?LABELS.en:LABELS.el;
+      var s=fBtn.querySelector('span');
+      s.textContent = state==='busy' ? l.busy : l.idle;
+      fBtn.setAttribute('aria-busy', state==='busy' ? 'true':'false');
+    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      fErr.classList.remove('show');
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      setBtn('busy');
+      fetch(form.action, {
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      }).then(function(r){
+        if(r.ok){
+          card.classList.add('sent');
+          card.scrollIntoView({behavior:reduce?'auto':'smooth', block:'center'});
+          form.reset();
+        } else {
+          fErr.classList.add('show'); setBtn('idle');
+        }
+      }).catch(function(){
+        fErr.classList.add('show'); setBtn('idle');
+      });
+    });
+  }
 
   /* ---------- content rights ---------- */
   d.addEventListener('copy', function(e){
