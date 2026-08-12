@@ -333,8 +333,13 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
 .art:hover .ar{background:var(--gold);border-color:var(--gold);color:#fff;transform:translateX(4px)}
 
 /* ============ CONTACT ============ */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px);align-items:start}
-.cinfo{display:flex;flex-direction:column;gap:22px}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(32px,5vw,64px);align-items:center
+}
+.contact-grid > *{min-width:0}
+.cinfo{display:flex;flex-direction:column;gap:22px;max-width:440px;width:100%;justify-self:center}
+.fcol{max-width:560px;width:100%;justify-self:center}
 .cline{display:flex;gap:15px;align-items:flex-start}
 .cline .ic{
   width:36px;height:36px;flex-shrink:0;border:1px solid rgba(43,39,36,.18);border-radius:50%;
@@ -689,11 +694,13 @@ footer a:hover{color:var(--gold-soft)}
           <p>Έχω παρακολουθήσει και συνεχίζω να παρακολουθώ συνέδρια, επιμορφώσεις και σεμινάρια σε θεματικές που με ενδιαφέρουν ιδιαίτερα και στις οποίες επιθυμώ να εμβαθύνω. Ένα από τα πεδία στα οποία έχω επιλέξει να εστιάσω είναι το ψυχικό τραύμα, καθώς και η διαχείριση του πένθους και της απώλειας, έχοντας ολοκληρώσει το πρόγραμμα επαγγελματικής επιμόρφωσης του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών (ΕΚΠΑ) «Ψυχική Υγεία: Τραυματικά Γεγονότα &amp; Διαχείριση Απώλειας / Πένθους».</p>
           <p>Παράλληλα, έχω αποκτήσει εμπειρία στο πεδίο των εξαρτήσεων μέσα από την πρακτική μου άσκηση στον Συμβουλευτικό Σταθμό του Κέντρου Θεραπείας Εξαρτημένων Ατόμων (ΚΕΘΕΑ), καθώς και μέσα από τη συμμετοχή μου σε θεωρητικά μαθήματα και σεμινάρια εμβάθυνσης στο Πρόγραμμα Προαγωγής Αυτοβοήθειας (ΠΠΑ). Στο επίκεντρο του θεραπευτικού μου ενδιαφέροντος βρίσκονται, μεταξύ άλλων, η αυτογνωσία και η κατανόηση του εαυτού, η υποστήριξη ανθρώπων που βιώνουν άγχος, κατάθλιψη, χρόνιο πόνο ή ψυχική κόπωση, καθώς επίσης δυσκολίες στις διαπροσωπικές σχέσεις και στους συναισθηματικούς δεσμούς ευρύτερα.</p>
 
+          <p>Έχοντας έρθει σε επαφή, τόσο θεωρητικά όσο και βιωματικά, με διαφορετικές ψυχοθεραπευτικές προσεγγίσεις, το ενδιαφέρον μου στράφηκε στην Προσωποκεντρική Ψυχοθεραπεία.</p>
+
           <div class="pull">
             <p class="k">Σε αυτήν συνάντησα έναν τρόπο θεραπευτικής προσέγγισης που μου έδωσε τη δυνατότητα <em>να υπάρχω όπως είμαι</em>, χωρίς την αίσθηση ότι χρειάζεται να γίνω κάποια άλλη για να αξίζω τη θεραπεία ή την αποδοχή.</p>
           </div>
 
-          <p>Έχοντας έρθει σε επαφή, τόσο θεωρητικά όσο και βιωματικά, με διαφορετικές ψυχοθεραπευτικές προσεγγίσεις, το ενδιαφέρον μου στράφηκε στην Προσωποκεντρική Ψυχοθεραπεία. Ένιωσα, επίσης, ότι αντιμετωπίζομαι ως άνθρωπος και όχι ως σύμπτωμα. Αυτή η εμπειρία αποτέλεσε για εμένα την αφετηρία της εκπαιδευτικής μου πορείας.</p>
+          <p>Ένιωσα, επίσης, ότι αντιμετωπίζομαι ως άνθρωπος και όχι ως σύμπτωμα. Αυτή η εμπειρία αποτέλεσε για εμένα την αφετηρία της εκπαιδευτικής μου πορείας.</p>
           <p>Αντιλαμβάνομαι την ψυχοθεραπεία ως μια διαδικασία που έχει τη δική της φυσική ροή και συνέχεια. Μια διαδικασία που μπορεί να ξεκινήσει και να εξελιχθεί όταν ο άνθρωπος βρεθεί στις κατάλληλες συνθήκες· συνθήκες που του επιτρέπουν να ανοιχτεί, να εξερευνήσει την εμπειρία του και να κινηθεί προς τη δική του τάση πραγμάτωσης.</p>
           <p>Συνεχίζω την προσωπική και επαγγελματική μου εξέλιξη μέσα από προσωπική θεραπεία, εποπτεία και συνεχιζόμενη εκπαίδευση, καθώς θεωρώ ότι αποτελούν όχι μόνο σημαντικές αλλά και αναγκαίες προϋποθέσεις για τη θεραπευτική εργασία. Εργάζομαι έχοντας ως σταθερό σημείο αναφοράς τον Κώδικα Δεοντολογίας και τις αρχές που διέπουν την άσκηση του επαγγέλματος του Ψυχολόγου και του Ψυχοθεραπευτή.</p>
           <p>Μαζί μπορούμε να εργαστούμε πάνω σε ζητήματα που σας απασχολούν, με επίκεντρο πάντοτε εσάς και άξονα τη θεραπευτική μας σχέση. Μια σχέση που επιθυμώ να διέπεται από την ενσυναίσθηση, την άνευ όρων αποδοχή και την αυθεντικότητα — συνθήκες που θεωρώ θεμελιώδεις, ώστε ένας άνθρωπος να μπορέσει να έρθει πιο κοντά στον εαυτό του και στις εμπειρίες του.</p>
@@ -707,11 +714,13 @@ footer a:hover{color:var(--gold-soft)}
           <p>I have attended, and continue to attend, conferences, professional courses and seminars on subjects of particular interest to me, in which I wish to deepen my understanding. One of the fields I have chosen to focus on is psychological trauma, as well as working with grief and loss, having completed the professional training programme of the National and Kapodistrian University of Athens “Mental Health: Traumatic Events &amp; Managing Loss / Grief”.</p>
           <p>Alongside this, I gained experience in the field of addiction through my placement at the Counselling Centre of KETHEA (Therapy Centre for Dependent Individuals), and through my participation in theoretical courses and advanced seminars at the Self-Help Promotion Programme. At the centre of my therapeutic interest are, among others, self-awareness and self-understanding, supporting people who experience anxiety, depression, chronic pain or emotional exhaustion, as well as difficulties in interpersonal relationships and emotional bonds more broadly.</p>
 
+          <p>Having come into contact, both theoretically and experientially, with different psychotherapeutic approaches, my interest turned towards Person-Centred Psychotherapy.</p>
+
           <div class="pull">
             <p class="k">In it I found a way of working therapeutically that allowed me <em>to exist as I am</em>, without the sense that I needed to become someone else in order to deserve therapy or acceptance.</p>
           </div>
 
-          <p>Having come into contact, both theoretically and experientially, with different psychotherapeutic approaches, my interest turned towards Person-Centred Psychotherapy. I also felt that I was being met as a person and not as a symptom. That experience became the starting point of my own training path.</p>
+          <p>I also felt that I was being met as a person and not as a symptom. That experience became the starting point of my own training path.</p>
           <p>I understand psychotherapy as a process that has its own natural flow and continuity. A process that can begin and unfold when a person finds themselves in the right conditions; conditions that allow them to open up, to explore their experience and to move towards their own actualising tendency.</p>
           <p>I continue my personal and professional development through personal therapy, supervision and continuing education, as I consider these to be not only important but necessary conditions for therapeutic work. I work with the Code of Ethics and the principles governing the practice of the Psychologist and the Psychotherapist as a constant point of reference.</p>
           <p>Together we can work on the issues that concern you, always centred on you, with our therapeutic relationship as the axis. A relationship I wish to be characterised by empathy, unconditional acceptance and authenticity — conditions I consider fundamental if a person is to come closer to themselves and to their experience.</p>
@@ -893,41 +902,8 @@ footer a:hover{color:var(--gold-soft)}
 
     <div class="rv rv-d1">
       <div class="arts">
-        <a class="art" href="arthro-5.html">
-          <span class="dt">02.08.2026</span>
-          <span>
-            <span class="ti i-el">Ο δρόμος προς την αυτοπραγμάτωση: Η ψυχοθεραπεία ως διαδρομή</span>
-            <span class="ti i-en">The road to self-actualisation: psychotherapy as a journey</span>
-            <span class="ex i-el">Μια μεγάλη διαδρομή, με στάσεις, παρακάμψεις και στροφές που επιλέγουμε ή που κάποτε μας υποδείχθηκαν.</span>
-            <span class="ex i-en">A long journey, with stops, detours and turns we choose — or were once told to take.</span>
-          </span>
-          <span class="ar" aria-hidden="true">→</span>
-        </a>
-
-        <a class="art" href="arthro-4.html">
-          <span class="dt">08.06.2026</span>
-          <span>
-            <span class="ti i-el">Η θεραπευτική σχέση: Τι σημαίνει πραγματικά να μας ακούει κάποιος;</span>
-            <span class="ti i-en">The therapeutic relationship: what does being truly heard mean?</span>
-            <span class="ex i-el">Για την ενσυναίσθηση, την ακρόαση χωρίς έτοιμη απάντηση και την ποιότητα παρουσίας μέσα στη θεραπεία.</span>
-            <span class="ex i-en">On empathy, listening without a ready answer, and the quality of presence within therapy.</span>
-          </span>
-          <span class="ar" aria-hidden="true">→</span>
-        </a>
-
-        <a class="art" href="arthro-6.html">
-          <span class="dt">30.05.2026</span>
-          <span>
-            <span class="ti i-el">Red Flags &amp; Green Flags στην ψυχοθεραπεία</span>
-            <span class="ti i-en">Red flags &amp; green flags in psychotherapy</span>
-            <span class="ex i-el">Τι αξίζει να γνωρίζουμε για τη θεραπευτική σχέση — μια προσωπική ματιά, όχι μια λίστα αξιολόγησης.</span>
-            <span class="ex i-en">What is worth knowing about the therapeutic relationship — a personal view, not a scorecard.</span>
-          </span>
-          <span class="ar" aria-hidden="true">→</span>
-        </a>
-
         <a class="art" href="arthro-1.html">
-          <span class="dt">02.02.2026</span>
+          <span class="dt"><time datetime="2025-02-02">02.02.2025</time></span>
           <span>
             <span class="ti i-el">Ξεκινώντας ψυχοθεραπεία…</span>
             <span class="ti i-en">Starting psychotherapy…</span>
@@ -937,8 +913,19 @@ footer a:hover{color:var(--gold-soft)}
           <span class="ar" aria-hidden="true">→</span>
         </a>
 
+        <a class="art" href="arthro-2.html">
+          <span class="dt"><time datetime="2025-09-14">14.09.2025</time></span>
+          <span>
+            <span class="ti i-el">Το θεραπευτικό συμβόλαιο ως το πρώτο βήμα της θεραπευτικής σχέσης</span>
+            <span class="ti i-en">The therapeutic contract as the first step of the relationship</span>
+            <span class="ex i-el">Τα όρια στις σχέσεις δεν υπάρχουν για να τις περιορίζουν. Υπάρχουν για να τις στηρίζουν.</span>
+            <span class="ex i-en">Boundaries in relationships do not exist to restrict them. They exist to support them.</span>
+          </span>
+          <span class="ar" aria-hidden="true">→</span>
+        </a>
+
         <a class="art" href="arthro-3.html">
-          <span class="dt">10.10.2025</span>
+          <span class="dt"><time datetime="2025-10-10">10.10.2025</time></span>
           <span>
             <span class="ti i-el">Πότε είναι η κατάλληλη στιγμή να ξεκινήσω ψυχοθεραπεία;</span>
             <span class="ti i-en">When is the right time to start psychotherapy?</span>
@@ -948,13 +935,35 @@ footer a:hover{color:var(--gold-soft)}
           <span class="ar" aria-hidden="true">→</span>
         </a>
 
-        <a class="art" href="arthro-2.html">
-          <span class="dt">14.09.2025</span>
+        <a class="art" href="arthro-4.html">
+          <span class="dt"><time datetime="2026-06-08">08.06.2026</time></span>
           <span>
-            <span class="ti i-el">Το θεραπευτικό συμβόλαιο ως το πρώτο βήμα της θεραπευτικής σχέσης</span>
-            <span class="ti i-en">The therapeutic contract as the first step of the relationship</span>
-            <span class="ex i-el">Τα όρια στις σχέσεις δεν υπάρχουν για να τις περιορίζουν. Υπάρχουν για να τις στηρίζουν.</span>
-            <span class="ex i-en">Boundaries in relationships do not exist to restrict them. They exist to support them.</span>
+            <span class="ti i-el">Η θεραπευτική σχέση: Τι σημαίνει πραγματικά να μας ακούει κάποιος;</span>
+            <span class="ti i-en">The therapeutic relationship: what does being truly heard mean?</span>
+            <span class="ex i-el">Για την ενσυναίσθηση, την ακρόαση χωρίς έτοιμη απάντηση και την ποιότητα παρουσίας μέσα στη θεραπεία.</span>
+            <span class="ex i-en">On empathy, listening without a ready answer, and the quality of presence within therapy.</span>
+          </span>
+          <span class="ar" aria-hidden="true">→</span>
+        </a>
+
+        <a class="art" href="arthro-5.html">
+          <span class="dt"><time datetime="2026-08-02">02.08.2026</time></span>
+          <span>
+            <span class="ti i-el">Ο δρόμος προς την αυτοπραγμάτωση: Η ψυχοθεραπεία ως διαδρομή</span>
+            <span class="ti i-en">The road to self-actualisation: psychotherapy as a journey</span>
+            <span class="ex i-el">Μια μεγάλη διαδρομή, με στάσεις, παρακάμψεις και στροφές που επιλέγουμε ή που κάποτε μας υποδείχθηκαν.</span>
+            <span class="ex i-en">A long journey, with stops, detours and turns we choose — or were once told to take.</span>
+          </span>
+          <span class="ar" aria-hidden="true">→</span>
+        </a>
+
+        <a class="art" href="arthro-6.html">
+          <span class="dt"><time datetime="2026-08-10">10.08.2026</time></span>
+          <span>
+            <span class="ti i-el">Red Flags &amp; Green Flags στην ψυχοθεραπεία</span>
+            <span class="ti i-en">Red flags &amp; green flags in psychotherapy</span>
+            <span class="ex i-el">Τι αξίζει να γνωρίζουμε για τη θεραπευτική σχέση — μια προσωπική ματιά, όχι μια λίστα αξιολόγησης.</span>
+            <span class="ex i-en">What is worth knowing about the therapeutic relationship — a personal view, not a scorecard.</span>
           </span>
           <span class="ar" aria-hidden="true">→</span>
         </a>
@@ -1010,7 +1019,7 @@ footer a:hover{color:var(--gold-soft)}
         </div>
       </div>
 
-      <div class="rv rv-d1">
+      <div class="rv rv-d1 fcol">
         <div class="formcard" id="formcard">
           <div class="fhead">
             <h3><span class="i-el">Στείλτε μου ένα μήνυμα</span><span class="i-en">Send me a message</span></h3>
