@@ -221,8 +221,10 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
 .hero .eyebrow{display:block;margin-bottom:26px}
 .hero-q{
   font-family:var(--serif);font-weight:300;
-  font-size:clamp(1.95rem,5.1vw,3.9rem);line-height:1.24;margin:0 auto;max-width:16ch
+  font-size:clamp(1.68rem,5.1vw,3.9rem);line-height:1.24;margin:0 auto;max-width:30ch
 }
+/* keep the quote on exactly two lines (break comes from the <br>) */
+@media(min-width:701px){ .hero-q{white-space:nowrap;max-width:none} }
 .hero-attr{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.5vw,1.2rem);color:var(--ink-2)}
 .hero hr.rule{margin:30px auto}
 .hero .btn{margin-top:38px}
@@ -255,8 +257,8 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
   padding:clamp(26px,4vw,46px);margin:34px 0;position:relative;overflow:hidden;border-radius:3px
 }
 .pull::before{
-  content:'';position:absolute;right:-28px;bottom:-46px;width:190px;height:216px;
-  background:url('assets/logo-mark.svg') no-repeat center/contain;opacity:.045;pointer-events:none
+  content:'';position:absolute;right:22px;bottom:20px;width:150px;height:171px;
+  background:url('assets/logo-mark.svg') no-repeat center/contain;opacity:.055;pointer-events:none
 }
 .pull .k{
   font-family:var(--serif);font-size:clamp(1.35rem,2.3vw,1.9rem);line-height:1.4;
@@ -345,9 +347,11 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
   width:36px;height:36px;flex-shrink:0;border:1px solid rgba(43,39,36,.18);border-radius:50%;
   display:grid;place-items:center;color:var(--gold-2)
 }
-.cline b{display:block;font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;margin-bottom:2px}
-.cline a,.cline span{font-family:var(--serif);font-size:1.24rem;text-decoration:none;line-height:1.35}
+.cline b,.cline b span{display:block;font-family:var(--serif);font-size:1.24rem;font-weight:400;
+  letter-spacing:normal;text-transform:none;color:var(--ink-3);line-height:1.35;margin-bottom:2px}
+.cline b span{margin-bottom:0}
+.cline a,.cline .cl-val{font-family:var(--serif);font-size:1.24rem;font-weight:400;color:var(--ink);
+  text-decoration:none;line-height:1.35}
 .cline a:hover{color:var(--gold-2)}
 .note{
   background:var(--cream);border-left:2px solid var(--gold);padding:16px 20px;
@@ -362,8 +366,8 @@ nav.main a:hover::after,nav.main a.active::after{width:100%}
   box-shadow:0 26px 60px -40px rgba(43,39,36,.55)
 }
 .formcard::before{
-  content:'';position:absolute;right:-70px;bottom:-60px;width:250px;height:285px;
-  background:url('assets/logo-mark.svg') no-repeat center/contain;opacity:.03;pointer-events:none
+  content:'';position:absolute;right:24px;bottom:22px;width:200px;height:228px;
+  background:url('assets/logo-mark.svg') no-repeat center/contain;opacity:.045;pointer-events:none
 }
 .formcard::after{
   content:'';position:absolute;left:0;top:0;height:2px;width:100%;
@@ -436,15 +440,16 @@ form .btn{align-self:flex-start;margin-top:2px;min-width:230px}
 footer{background:var(--night);color:#CFC7BB;padding:clamp(56px,7vw,96px) 0 0;font-size:.86rem}
 footer a{color:#CFC7BB;text-decoration:none;transition:color .3s var(--ease)}
 footer a:hover{color:var(--gold-soft)}
-.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);
+.fgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1.25fr) minmax(0,.9fr);
   gap:clamp(30px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
 .fh{font-size:.61rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);
   font-weight:500;margin-bottom:18px}
 .flogo{width:170px;margin-bottom:20px;opacity:.94}
-.fabout{color:#9A9186;line-height:1.7;font-size:.83rem;max-width:32ch}
+.fabout{color:#9A9186;line-height:1.7;font-size:.83rem;max-width:46ch}
 .crisis{display:flex;flex-direction:column;gap:14px}
 .crisis .c{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:baseline}
-.crisis .n{font-family:var(--serif);font-size:1.14rem;color:var(--gold-soft);white-space:nowrap}
+.crisis .n{font-family:var(--serif);font-size:1.14rem;color:var(--gold-soft);white-space:nowrap;
+  min-width:4.2em;text-align:left}
 .crisis .t{font-size:.79rem;line-height:1.5}
 .crisis .t em{display:block;font-style:normal;color:#8E867B;font-size:.75rem;margin-top:2px}
 .crisis-warn{color:#B5ABA0;font-size:.81rem;line-height:1.65;margin-bottom:20px;
@@ -561,7 +566,7 @@ footer a:hover{color:var(--gold-soft)}
   <div class="mob-foot">
     <a href="#epikoinonia" class="btn" style="align-self:flex-start"><span data-el="Κλείστε την 1η συνεδρία" data-en="Book your first session">Κλείστε την 1η συνεδρία</span></a>
     <div style="font-size:.85rem;color:var(--ink-3);line-height:1.7">
-      <a href="tel:+302312317323" style="text-decoration:none">2312 317 323</a><br>
+      <a href="tel:+302312317323" style="text-decoration:none">231 231 7323</a><br>
       <a href="mailto:info@viw.gr" style="text-decoration:none">info@viw.gr</a>
     </div>
   </div>
@@ -676,8 +681,8 @@ footer a:hover{color:var(--gold-soft)}
           </div>
           <div>
             <b><span class="i-el">Εκπαίδευση</span><span class="i-en">Training</span></b>
-            <span class="i-el">Προσωποκεντρική &amp; Focusing Βιωματική Ψυχοθεραπεία</span>
-            <span class="i-en">Person-Centred &amp; Focusing-Oriented Experiential Psychotherapy</span>
+            <span class="i-el">MSc Κλινικής Ψυχικής Υγείας | ΑΠΘ<br>Προσωποκεντρική &amp; Focusing Βιωματική Ψυχοθεραπεία</span>
+            <span class="i-en">MSc in Clinical Mental Health | AUTh<br>Person-Centred &amp; Focusing-Oriented Experiential Psychotherapy</span>
           </div>
           <div>
             <b><span class="i-el">Μέλος</span><span class="i-en">Member</span></b>
@@ -767,11 +772,11 @@ footer a:hover{color:var(--gold-soft)}
           <summary><i>02</i><span class="i-el">Πόσο συχνά πραγματοποιούνται οι συνεδρίες και πόση διάρκεια έχουν;</span><span class="i-en">How often do sessions take place and how long do they last?</span></summary>
           <div class="ans">
             <div class="i-el">
-              <p>Οι συνεδρίες πραγματοποιούνται συνήθως μία φορά την εβδομάδα και έχουν διάρκεια 1 ώρα.</p>
+              <p>Οι συνεδρίες πραγματοποιούνται συνήθως μία φορά την εβδομάδα και έχουν διάρκεια 50 λεπτά.</p>
               <p>Η σταθερή ημέρα και ώρα βοηθούν στη δημιουργία ενός σταθερού θεραπευτικού πλαισίου, μέσα στο οποίο η θεραπευτική σχέση μπορεί να αναπτυχθεί με ασφάλεια και συνέπεια. Εφόσον προκύψει ανάγκη, η συχνότητα των συνεδριών μπορεί να συζητηθεί και να προσαρμοστεί ανάλογα με τις δυνατότητες σας.</p>
             </div>
             <div class="i-en">
-              <p>Sessions usually take place once a week and last 1 hour.</p>
+              <p>Sessions usually take place once a week and last 50 minutes.</p>
               <p>A fixed day and time help create a stable therapeutic frame, within which the therapeutic relationship can develop safely and consistently. Should the need arise, the frequency of sessions can be discussed and adjusted according to your circumstances.</p>
             </div>
           </div>
@@ -796,11 +801,11 @@ footer a:hover{color:var(--gold-soft)}
           <div class="ans">
             <div class="i-el">
               <p>Μπορείτε να επικοινωνήσετε μέσω της <a href="#epikoinonia" style="color:var(--gold-2)">φόρμας επικοινωνίας</a> του ΒΙΩ ή στέλνοντας e-mail στο <a href="mailto:info@viw.gr" style="color:var(--gold-2)">info@viw.gr</a> και θα επικοινωνήσω το συντομότερο δυνατό μαζί σας, ώστε να βρούμε μια ημέρα και ώρα που να μας εξυπηρετεί.</p>
-              <p>Διαφορετικά, μπορείτε να καλέσετε απευθείας στο <a href="tel:+302312317323" style="color:var(--gold-2)">2312 317 323</a>.</p>
+              <p>Διαφορετικά, μπορείτε να καλέσετε απευθείας στο <a href="tel:+302312317323" style="color:var(--gold-2)">231 231 7323</a>.</p>
             </div>
             <div class="i-en">
               <p>You can get in touch through the VIO <a href="#epikoinonia" style="color:var(--gold-2)">contact form</a> or by sending an e-mail to <a href="mailto:info@viw.gr" style="color:var(--gold-2)">info@viw.gr</a>, and I will reply as soon as possible so that we can find a day and time that suits us both.</p>
-              <p>Alternatively, you can call directly on <a href="tel:+302312317323" style="color:var(--gold-2)">2312 317 323</a>.</p>
+              <p>Alternatively, you can call directly on <a href="tel:+302312317323" style="color:var(--gold-2)">231 231 7323</a>.</p>
             </div>
           </div>
         </details>
@@ -872,7 +877,7 @@ footer a:hover{color:var(--gold-soft)}
           <div class="ans">
             <div class="i-el">
               <p>Είναι απολύτως φυσιολογικό να υπάρχουν απορίες, αμφιβολίες ή και δισταγμός πριν από την πρώτη συνεδρία.</p>
-              <p>Η πρώτη συνάντηση μπορεί να αποτελέσει μια ευκαιρία να γνωριστούμε, να συζητήσουμε όσα σας απασχολούν και να δείτε πώς αισθάνεστε μέσα στον θεραπευτικό χώρο. Ίσως έτσι καταλάβετε, εάν είναι η ψυχοθεραπεία είναι ένας δρόμος που θα θέλατε να επιλέξετε.</p>
+              <p>Η πρώτη συνάντηση μπορεί να αποτελέσει μια ευκαιρία να γνωριστούμε, να συζητήσουμε όσα σας απασχολούν και να δείτε πώς αισθάνεστε μέσα στον θεραπευτικό χώρο. Ίσως έτσι καταλάβετε, εάν η ψυχοθεραπεία είναι ένας δρόμος που θα θέλατε να επιλέξετε.</p>
             </div>
             <div class="i-en">
               <p>It is completely natural to have questions, doubts or hesitation before a first session.</p>
@@ -894,10 +899,10 @@ footer a:hover{color:var(--gold-soft)}
       <h2><span class="i-el">Τροφή<br>για σκέψη</span><span class="i-en">Food<br>for thought</span></h2>
       <hr class="rule">
       <p style="margin-top:18px">
-        <span class="i-el">Σκέψεις και κείμενα γύρω από την ψυχοθεραπεία και τη θεραπευτική σχέση.</span>
-        <span class="i-en">Thoughts and writing on psychotherapy and the therapeutic relationship.</span>
+        <span class="i-el">Σκέψεις και κείμενα γύρω από τη ζωή, την ψυχοθεραπεία και τη θεραπευτική σχέση.</span>
+        <span class="i-en">Thoughts and writing on life, psychotherapy and the therapeutic relationship.</span>
       </p>
-      <a href="arthra.html" class="btn btn--ghost" style="margin-top:22px"><span data-el="Όλα τα άρθρα" data-en="All articles">Όλα τα άρθρα</span></a>
+      <a href="arthra.html" class="btn btn--ghost" style="margin-top:22px"><span data-el="Όλα τα κείμενα" data-en="All writing">Όλα τα κείμενα</span></a>
     </div>
 
     <div class="rv rv-d1">
@@ -990,7 +995,7 @@ footer a:hover{color:var(--gold-soft)}
           </span>
           <span>
             <b><span class="i-el">Τηλέφωνο</span><span class="i-en">Telephone</span></b>
-            <a href="tel:+302312317323">2312 317 323</a>
+            <a href="tel:+302312317323">231 231 7323</a>
           </span>
         </div>
         <div class="cline">
@@ -1008,8 +1013,8 @@ footer a:hover{color:var(--gold-soft)}
           </span>
           <span>
             <b><span class="i-el">Συνεδρίες</span><span class="i-en">Sessions</span></b>
-            <span class="i-el">Διαδικτυακά, κατόπιν ραντεβού</span>
-            <span class="i-en">Online, by appointment</span>
+            <span class="cl-val i-el">Κατόπιν ραντεβού</span>
+            <span class="cl-val i-en">By appointment</span>
           </span>
         </div>
 
@@ -1093,7 +1098,7 @@ footer a:hover{color:var(--gold-soft)}
             </p>
             <p class="tcontact">
               <span class="i-el">Για κάτι επείγον:</span><span class="i-en">If something is urgent:</span>
-              <a href="tel:+302312317323">2312 317 323</a>
+              <a href="tel:+302312317323">231 231 7323</a>
             </p>
           </div>
         </div>
@@ -1110,11 +1115,11 @@ footer a:hover{color:var(--gold-soft)}
       <div>
         <img src="assets/logo-full-beige.png" alt="ΒΙΩ — Χώρος Ψυχοθεραπείας" class="flogo" loading="lazy">
         <p class="fabout">
-          <span class="i-el">Διαδικτυακός χώρος ψυχοθεραπείας ενηλίκων. Προσωποκεντρική και Focusing Βιωματική Ψυχοθεραπεία. Συνεδρίες κατόπιν ραντεβού.</span>
-          <span class="i-en">An online space for adult psychotherapy. Person-Centred and Focusing-Oriented Experiential Psychotherapy. Sessions by appointment.</span>
+          <span class="i-el">Διαδικτυακός χώρος ψυχοθεραπείας ενηλίκων<br>Προσωποκεντρική &amp; Focusing Βιωματική Ψυχοθεραπεία<br>Συνεδρίες κατόπιν ραντεβού</span>
+          <span class="i-en">An online space for adult psychotherapy<br>Person-Centred &amp; Focusing-Oriented Experiential Psychotherapy<br>Sessions by appointment</span>
         </p>
-        <p class="fabout" style="margin-top:16px">
-          <a href="tel:+302312317323">2312 317 323</a><br>
+        <p class="fabout" style="margin-top:10px">
+          <a href="tel:+302312317323">231 231 7323</a><br>
           <a href="mailto:info@viw.gr">info@viw.gr</a>
         </p>
       </div>
@@ -1134,7 +1139,7 @@ footer a:hover{color:var(--gold-soft)}
             </span>
           </div>
           <div class="c">
-            <span class="n">166 / 100</span>
+            <span class="n">166<br>100</span>
             <span class="t">
               <span class="i-el">ΕΚΑΒ / Αστυνομία (24/7)<em>Για περιπτώσεις όπου υπάρχει άμεσος, σωματικός κίνδυνος για τη ζωή του ατόμου ή άλλων.</em></span>
               <span class="i-en">Ambulance / Police (24/7)<em>Where there is immediate physical danger to the person's life or to others.</em></span>
