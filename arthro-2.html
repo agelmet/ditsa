@@ -17,8 +17,12 @@
 <meta property="og:url" content="https://viw.gr/arthro-2.html">
 <meta property="og:image" content="https://viw.gr/assets/hero-light.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
-<link rel="apple-touch-icon" href="assets/logo-full.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Commissioner:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -136,8 +140,8 @@ footer a:hover{color:var(--gold-soft)}
 .fbar a.advon{color:#CFC7BB}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
+html.jsrv .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+html.jsrv .rv.in{opacity:1;transform:none}
 .rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}
 
 /* ===== ARTICLE ===== */
@@ -226,10 +230,11 @@ ul.flags.red li{border-left-color:#B96D5E}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
     transition-duration:.001ms !important;scroll-behavior:auto !important}
-  .rv{opacity:1;transform:none}
+  html.jsrv .rv{opacity:1;transform:none}
 }
 @media print{header,.mob,.burger,.anav,.cta{display:none !important}}
 </style>
+<script>document.documentElement.className+=' jsrv';</script>
 </head>
 <body>
 <header id="hdr">
@@ -435,12 +440,25 @@ ul.flags.red li{border-left-color:#B96D5E}
   if(saved==='en') setLang('en');
 
   var rv=d.querySelectorAll('.rv');
+  function rvSweep(){
+    var vh = window.innerHeight || d.documentElement.clientHeight || 0;
+    rv.forEach(function(el){
+      if(el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if(r.top < vh * 0.94 && r.bottom > 0) el.classList.add('in');
+    });
+  }
   if(reduce || !('IntersectionObserver' in window)){ rv.forEach(function(el){ el.classList.add('in'); }); }
   else{
     var io=new IntersectionObserver(function(en){ en.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },
-      {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+      {threshold:0, rootMargin:'0px 0px -6% 0px'});
     rv.forEach(function(el){ io.observe(el); });
+    rvSweep();
+    requestAnimationFrame(rvSweep);
+    window.addEventListener('load', rvSweep);
+    window.addEventListener('scroll', rvSweep, {passive:true});
+    window.addEventListener('resize', rvSweep, {passive:true});
   }
 
   d.addEventListener('copy', function(e){
