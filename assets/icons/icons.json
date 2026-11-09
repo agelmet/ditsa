@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/logo-mark.svg"
+ },
+ "source_md5": "0f272a0efc07f9e2e6d874fb2140e85d",
+ "version": "1178146b",
+ "tile": "#FAF6EF",
+ "crop": null,
+ "header": [
+  "file",
+  "assets/logo-lockup.svg",
+  "aa08fecab4bf805ea97a45c1a6f7a7f1"
+ ],
+ "made": "2026-11-09"
+}
